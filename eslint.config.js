@@ -1,26 +1,22 @@
-import prettier from 'eslint-config-prettier';
 import globals from 'globals';
 import tsEslint from 'typescript-eslint';
 
 export default tsEslint.config({
   files: ['**/*.ts', '**/*.js'],
-  extends: [
-    ...tsEslint.configs.recommended,
-    prettier
-  ],
+  extends: [...tsEslint.configs.recommended],
   languageOptions: {
     globals: {
       ...globals.node,
-      ...globals.jest
+      ...globals.jest,
     },
     parser: tsEslint.parser,
     parserOptions: {
       project: 'tsconfig.json',
-      sourceType: 'module'
-    }
+      sourceType: 'module',
+    },
   },
   plugins: {
-    '@typescript-eslint': tsEslint.plugin
+    '@typescript-eslint': tsEslint.plugin,
   },
   ignores: ['webpack-hmr.config.js'],
   rules: {
@@ -28,6 +24,6 @@ export default tsEslint.config({
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
-    'function-paren-newline': ['error', 'multiline-arguments']
-  }
+    'function-paren-newline': ['error', 'multiline-arguments'],
+  },
 });

@@ -1,0 +1,31 @@
+app:
+  port: 3000
+  timeout: 60000
+  prefix: /react-admin-api
+  assetsPrefix: /react-admin-assets
+mysql:
+  host: 127.0.0.1
+  port: 3306
+  database: react-admin-dev
+  username: root
+  password: qaz123456
+  timezone: +08:00
+  synchronize: true
+  logging: true
+redis:
+  host: 127.0.0.1
+  port: 6379
+  db: 0,
+  keyPrefix: react-admin
+logger:
+  level: debug
+  dirname: react-admin-backend-logs/daily-log
+  filename: app-%DATE%.log
+  datePattern: YYYY-MM-DD
+  maxSize: 1M,
+  host: localhost
+  port: 3001
+  path: /react-admin-api-logs
+jwt:
+  secret: 3QQZXSNxGqzM6F3eOS30hKFYeP2jJbkCoBta99dTRUNnsphiv89ylwcfDohM
+  expires: 1d

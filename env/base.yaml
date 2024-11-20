@@ -1,0 +1,6 @@
+swagger:
+  enable: true
+  path: react-admin-api-doc
+  version: 1
+  title: react-admin后台管理系统API文档
+  description: react-admin中后台管理系统API文档

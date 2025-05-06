@@ -3,10 +3,11 @@ app:
   timeout: 60000
   prefix: /react-admin-api
   assetsPrefix: /react-admin-assets
+  corsOrigin: localhost:8000
 mysql:
-  host: 127.0.0.1
+  host: localhost
   port: 3306
-  database: react-admin-dev
+  database: react_admin_dev
   username: root
   password: qaz123456
   timezone: +08:00
@@ -17,6 +18,7 @@ redis:
   port: 6379
   db: 0,
   keyPrefix: react-admin
+  password: qaz123456
 logger:
   level: debug
   dirname: react-admin-backend-logs/daily-log
@@ -27,5 +29,13 @@ logger:
   port: 3001
   path: /react-admin-api-logs
 jwt:
-  secret: 3QQZXSNxGqzM6F3eOS30hKFYeP2jJbkCoBta99dTRUNnsphiv89ylwcfDohM
-  expires: 1d
+  secret: 3QKZXSNxGqzM6F3eOS30hKFYeP2jJbkCoBta99dTRUNnsphiv89ylwcfDohM
+  expiresIn: 1d
+  refreshTokenSecret: shdneyb223nfdbsybeQWIUYBGF65GRdv
+  refreshTokenExpiresIn: 7d
+captcha:
+  width: 100
+  height: 50
+  length: 4
+  ttl: 60
+  enable: true

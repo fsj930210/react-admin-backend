@@ -5,12 +5,20 @@ import { ConfigService } from '@nestjs/config';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 import { ValidationPipe, VersioningType } from '@nestjs/common';
 import { NestExpressApplication } from '@nestjs/platform-express';
+import * as cookieParser from 'cookie-parser';
 
 declare const module: any;
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   const configService = app.get(ConfigService);
 
+  // cookie
+  app.use(cookieParser());
+  // 跨域
+  app.enableCors({
+    origin: configService.get('app.corsOrigin'),
+    credentials: true,
+  });
   app.setGlobalPrefix(configService.get('app.prefix'));
   app.useStaticAssets('assets', {
     prefix: configService.get('app.assetsPrefix'),

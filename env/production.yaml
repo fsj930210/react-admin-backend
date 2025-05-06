@@ -3,6 +3,7 @@ app:
   timeout: 30000
   prefix: /react-admin-api
   assetsPrefix: /react-admin-assets
+  loginCaptcha: true
 mysql:
   host: localhost
   port: 3306
@@ -28,4 +29,11 @@ logger:
   path: /react-admin-api-logs
 jwt:
   secret: WRm0C3vkyT1KdYJdpF2D3lRcIiNtD6C721BSHe3yyxTJVH2s6jBg6OTiO23G
-  expires: 2h
+  expiresIn: 2h
+  refreshTokenExpiresIn: 7d
+captcha:
+  width: 100
+  height: 50
+  length: 4
+  ttl: 60
+  enable: true

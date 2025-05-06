@@ -7,6 +7,7 @@ import {
 } from '@nestjs/common';
 import { catchError, Observable, throwError, timeout, TimeoutError } from 'rxjs';
 import { ConfigService } from '@nestjs/config';
+import { MAX_REQUEST_TIMEOUT } from '@/constants/common.constant';
 /**
  * 超时拦截器
  */
@@ -14,7 +15,7 @@ import { ConfigService } from '@nestjs/config';
 export class TimeoutInterceptor implements NestInterceptor {
   constructor(private readonly configService: ConfigService) {}
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
-    const maxTimeout = 180000;
+    const maxTimeout = MAX_REQUEST_TIMEOUT;
     const configTimeout = this.configService.get('app.timeout');
     const resolvedTimeout = configTimeout > maxTimeout ? maxTimeout : configTimeout;
     return next.handle().pipe(

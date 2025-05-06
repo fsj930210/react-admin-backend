@@ -1,6 +1,6 @@
 import { applyDecorators, Type } from '@nestjs/common';
 import { ApiExtraModels, ApiOkResponse, ApiProperty, getSchemaPath } from '@nestjs/swagger';
-import { SUCCESS_CODE } from '@/constants/response.constant';
+import { RESPONSE_SUCCESS_CODE } from '@/constants/response.constant';
 
 export class BasicResponseDto<T> {
   @ApiProperty({ description: 'data' })
@@ -19,7 +19,7 @@ export class BasicResponseDto<T> {
   }
 
   static success<T>(data: T | null = null) {
-    return new BasicResponseDto<T>(SUCCESS_CODE, data);
+    return new BasicResponseDto<T>(RESPONSE_SUCCESS_CODE, data);
   }
   static error(errorCode: string, message: string = 'error') {
     return new BasicResponseDto(errorCode, null, message);
